@@ -1,0 +1,212 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Wikipedia-Dynamic</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/style.css">
+<script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
+<script>
+$(document).ready(function(){
+	$('<div class="content col"><h2 class="contentTitle">Content<span class="contentBtn">hide</span></h2><ul id="content"></ul></div>').insertAfter('.intordaction');
+	
+	$('.header').each(function(index){
+		var $header = $(this);
+		var $index = index + 1;
+		var $text = $header.text();
+		$header.prepend('<a id="'+$text.replace(' ','_')+'"></a>');
+		$('<span>' + $text + '</span>').appendTo('#content').wrap('<li><a href="#' + $text.replace(' ','_') + '"></li>').before('<span class="num">'+ ($index) + '</span>');
+		$('#content > li').eq(index).append('<ul id="subContent-' + ($index) + '"></ul>');
+		$header.nextUntil('.header:eq(' + $index + ')').not('p,div').each(function(index){
+			var $subHeader = $(this);
+			var $subIndex = index + 1;
+			var $subText = $(this).text();
+			$subHeader.prepend('<a id="' + $subText.replace(' ','_') + '"></a>');
+			$('<span>'+$subText+'</span>').appendTo('#subContent-'+$index).wrap('<li><a id="sub-' + $subIndex + '" href="#'+$subText.replace(' ','_')+'"></a></li>').before('<span class=num>'+$index+'.'+$subIndex+'</span>');
+			//$subHeader.nextUntil('.subHeader:eq('+$subIndex+')').last('p').append('<a href="#sub-'+$subIndex+'">(back)</a>')
+		});
+		
+	});
+	$('.contentBtn').click(function(){
+		if($(this).text()=='hide'){
+		$('#content').css('display','none');
+		$('.content').css('width','15%');
+		$('.contentBtn').text('show');
+		}else{
+			$('#content').css('display','block');
+			$('.contentBtn').text('hide');	
+			$('.content').css('width','25%');
+		}
+	});
+	function addBack(index,$index){
+		$('.subContrnt').eq(index).nextUntil($index).last('p').append('<a href="#subContent-'+$index+'">(back)</a>')
+	}
+});
+</script>
+</head>
+<body>
+<div class="container mt-5">
+	<div class="row">
+		<div class="col">
+			<div class="article">
+				<h1 class="borderBottom">Toronto</h1>
+				<p class="intordaction">
+					Toronto is the provincial capital of Ontario and the most populous city in Canada, with a population of 2,731,571 as of 2016. Current to 2016, the Toronto census metropolitan area (CMA), of which the majority is within the Greater Toronto Area (GTA), held a population of 5,928,040, making it Canada's most populous CMA. The city is the anchor of the Golden Horseshoe, an urban agglomeration of 9,245,438 people (as of 2016) surrounding the western end of Lake Ontario.Toronto is an international centre of business, finance, arts, and culture, and is recognized as one of the most multicultural and cosmopolitan cities in the world.
+
+					People have travelled through and inhabited the Toronto area, located on a broad sloping plateau interspersed with rivers, deep ravines, and urban forest, for more than 10,000 years. After the broadly disputed Toronto Purchase, when the Mississauga surrendered the area to the British Crown, the British established the town of York in 1793 and later designated it as the capital of Upper Canada. During the War of 1812, the town was the site of the Battle of York and suffered heavy damage by American troops. York was renamed and incorporated in 1834 as the city of Toronto. It was designated as the capital of the province of Ontario in 1867 during Canadian Confederation. The city proper has since expanded past its original borders through both annexation and amalgamation to its current area of 630.2 km2 (243.3 sq mi).
+
+					The diverse population of Toronto reflects its current and historical role as an important destination for immigrants to Canada. More than 50 percent of residents belong to a visible minority population group, and over 200 distinct ethnic origins are represented among its inhabitants. While the majority of Torontonians speak English as their primary language, over 160 languages are spoken in the city.
+
+					Toronto is a prominent centre for music, theatre, motion picture production, and television production, and is home to the headquarters of Canada's major national broadcast networks and media outlets. Its varied cultural institutions, which include numerous museums and galleries, festivals and public events, entertainment districts, national historic sites, and sports activities, attract over 43 million tourists each year. Toronto is known for its many skyscrapers and high-rise buildings, in particular the tallest free-standing structure in the Western Hemisphere, the CN Tower.
+					The city is home to the Toronto Stock Exchange, the headquarters of Canada's five largest banks, and the headquarters of many large Canadian and multinational corporations. Its economy is highly diversified with strengths in technology, design, financial services, life sciences, education, arts, fashion, aerospace, environmental innovation, food services, and tourism.
+				</p>
+				<h2 class="header mt-5 borderBottom">History</h2>
+			  	<h3 class="subHeader">Before 1800</h3>
+				<p>
+					When Europeans first arrived at the site of present-day Toronto, the vicinity was inhabited by the Iroquois,[45] who had displaced the Wyandot (Huron) people, occupants of the region for centuries before c. 1500.[46] The name Toronto is likely derived from the Iroquoian word tkaronto, meaning "place where trees stand in the water".[47] This refers to the northern end of what is now Lake Simcoe, where the Huron had planted tree saplings to corral fish. However, the word "Toronto", meaning "plenty" also appears in a 1632 French lexicon of the Huron language, which is also an Iroquoian language.[48] It also appears on French maps referring to various locations, including Georgian Bay, Lake Simcoe, and several rivers.[49] A portage route from Lake Ontario to Lake Huron running through this point, known as the Toronto Carrying-Place Trail, led to widespread use of the name. The site of Toronto lay at the entrance to one of the oldest routes to the northwest, a route known and used by Huron, Iroquois, and Chippewa Indians, and was of strategic importance from the beginning of Ontario's recorded history.[50]
+
+					In the 1660s, the Iroquois established two villages within what is today Toronto, Ganatsekwyagon on the banks of the Rouge River and Teiaiagon on the banks of the Humber River. By 1701, the Mississauga had displaced the Iroquois, who abandoned the Toronto area at the end of the Beaver Wars, with most returning to their base in present-day New York.[51]</p>
+			  	<div class="img">
+					<div class="imgInner">
+						<img src="image/1.jpg" width="219" height="77" alt=""/>
+				  	</div>
+					<p class="imgCaption">In the 17th century, the area was a crucial link for travel, with the Humber and Rouge rivers providing a shortcut to the upper Great Lakes. These routes together were known as the Toronto Passage.</p>
+				</div>
+				<p>French traders founded Fort Rouillé in 1750 (the current Exhibition grounds were later developed here), but abandoned it in 1759 during the Seven Years' War.[52] The British defeated the French and their indigenous allies in the war, and the area became part of the British colony of Quebec in 1763. </p>
+			  	<p>During the American Revolutionary War, an influx of British settlers came here as United Empire Loyalists fled for the British-controlled lands north of Lake Ontario. The Crown granted them land to compensate for their losses in the Thirteen Colonies. The new province of Upper Canada was being created and needed a capital. In 1787, the British Lord Dorchester arranged for the Toronto Purchase with the Mississauga of the New Credit First Nation, thereby securing more than a quarter of a million acres (1000 km2) of land in the Toronto area.[53] Dorchester intended the location to be named Toronto.[49] The first 25 years after the Toronto purchase was quiet, although "there were occasional independent fur traders" present in the area, with the usual complaints of debauchery and drunkenness.[54]</p>
+
+				<p>In 1793, Governor John Graves Simcoe established the town of York on the Toronto Purchase lands, naming it after Prince Frederick, Duke of York and Albany. Simcoe decided to move the Upper Canada capital from Newark (Niagara-on-the-Lake) to York,[55] believing the new site would be less vulnerable to attack by the United States.[56] The York garrison was built at the entrance of the town's natural harbour, sheltered by a long sand-bar peninsula. The town's settlement formed at the harbour's eastern end behind the peninsula, near the present-day intersection of Parliament Street and Front Street (in the "Old Town" area). </p>
+				<h3 class="subHeader">19th century</h3>
+				<p>In 1813, as part of the War of 1812, the Battle of York ended in the town's capture and plunder by United States forces.[57] John Strachan negotiated the town's surrender. American soldiers destroyed much of the garrison and set fire to the parliament buildings during their five-day occupation. Because of the sacking of York, British troops retaliated later in the war with the burning of Washington, D.C.</p>
+			  <div class="img">
+					<div class="imgInner">
+						<img src="image/2.jpg" width="219" height="77" alt=""/>
+				  	</div>
+					<p class="imgCaption">American forces attacked York in 1813. The Americans subsequently plundered the town, and set fire to the legislative buildings.</p>
+				</div>
+				<p>York was incorporated as the City of Toronto on March 6, 1834, reverting to its original native name. Reformist politician William Lyon Mackenzie became the first Mayor of Toronto and led the unsuccessful Upper Canada Rebellion of 1837 against the British colonial government. </p>
+			  <p>Toronto's population of 9,000 included African-American slaves, some of whom were brought by the Loyalists, including Mohawk leader Joseph Brant, and fewer Black Loyalists, whom the Crown had freed. (Most of the latter were resettled in Nova Scotia.) By 1834 refugee slaves from America's South were also immigrating to Toronto, settling in Canada to gain freedom.[58] Slavery was banned outright in Upper Canada (and throughout the British Empire) in 1834.[59] Torontonians integrated people of colour into their society. In the 1840s, an eating house at Frederick and King Streets, a place of mercantile prosperity in the early city, was operated by a black man named Bloxom.[60]</p>
+			  <p>As a major destination for immigrants to Canada, the city grew rapidly through the remainder of the 19th century. The first significant wave of immigrants were Irish, fleeing the Great Irish Famine; most of them were Catholic. By 1851, the Irish-born population had become the largest single ethnic group in the city. The Scottish and English population welcomed smaller numbers of Protestant Irish immigrants, some from what is now Northern Ireland, which gave the Orange Order significant and long-lasting influence over Toronto society. </p>
+			  <div class="img">
+					<div class="imgInner">
+						<img src="image/3.jpg" width="219" height="77" alt=""/>
+				  	</div>
+					<p class="imgCaption">View of Toronto in 1854. Toronto became a major destination for immigrants to Canada in the second half of the 19th century.</p>
+				</div>
+				<p>For brief periods, Toronto was twice the capital of the united Province of Canada: first from 1849 to 1852, following unrest in Montreal, and later 1856–1858. After this date, Quebec was designated as the capital until 1866 (one year before Canadian Confederation). Since then, the capital of Canada has remained Ottawa, Ontario.[61]</p>
+				<p>Toronto became the capital of the province of Ontario after its official creation in 1867. The seat of government of the Ontario Legislature is at Queen's Park. Because of its provincial capital status, the city was also the location of Government House, the residence of the viceregal representative of the Crown in right of Ontario. </p>
+				<p>Long before the Royal Military College of Canada was established in 1876, supporters of the concept proposed military colleges in Canada. Staffed by British Regulars, adult male students underwent a three-month-long military course at the School of Military Instruction in Toronto. Established by Militia General Order in 1864, the school enabled officers of militia or candidates for commission or promotion in the Militia to learn military duties, drill and discipline, to command a company at Battalion Drill, to drill a company at Company Drill, the internal economy of a company, and the duties of a company's officer.[62] The school was retained at Confederation, in 1867. In 1868, Schools of cavalry and artillery instruction were formed in Toronto.[63]</p>
+			  <div class="imgRight">
+					<div class="imgInner">
+						<img src="image/4.jpg" width="220" height="92" alt=""/>
+				  	</div>
+					<p class="imgCaption">View of Toronto in 1854. Toronto became a major destination for immigrants to Canada in the second half of the 19th century.</p>
+				</div>
+				<p>In the 19th century, the city built an extensive sewage system to improve sanitation, and streets were illuminated with gas lighting as a regular service. Long-distance railway lines were constructed, including a route completed in 1854 linking Toronto with the Upper Great Lakes. The Grand Trunk Railway and the Northern Railway of Canada joined in the building of the first Union Station in downtown. The advent of the railway dramatically increased the numbers of immigrants arriving, commerce and industry, as had the Lake Ontario steamers and schooners entering port before. These enabled Toronto to become a major gateway linking the world to the interior of the North American continent. </p>
+				<p>Toronto became the largest alcohol distillation (in particular, spirits) centre in North America. By the 1860s the Gooderham and Worts Distillery operations became the world's largest whiskey factory. A preserved section of this once dominant local industry remains in the Distillery District. The harbour allowed for sure access to grain and sugar imports used in processing. Expanding port and rail facilities brought in northern timber for export and imported Pennsylvania coal. Industry dominated the waterfront for the next 100 years. </p>
+				<div class="img">
+					<div calss="imgInner">
+						<img src="image/5.jpg" width="220" height="165" alt=""/>
+					</div>
+					<p class="imgCaption">Horse-drawn streetcars in 1890. The city's streetcar system transitioned to electric-powered streetcars in 1892</p>
+			  	</div>
+				<p>Horse-drawn streetcars gave way to electric streetcars in 1891, when the city granted the operation of the transit franchise to the Toronto Railway Company. The public transit system passed into public ownership in 1921 as the Toronto Transportation Commission, later renamed the Toronto Transit Commission. The system now has the third-highest ridership of any city public transportation system in North America.[64]</p>
+				<h3 class="subHeader mt-3">20th century</h3>
+				<p>The Great Toronto Fire of 1904 destroyed a large section of downtown Toronto. The fire destroyed more than 100 buildings.[65] The fire claimed one victim, John Croft, who was an explosive expert clearing the ruins from the fire.[66] It caused C$10,387,000 in damage.[67]</p>
+				<p>The city received new European immigrant groups beginning in the late 19th century into the early 20th century, particularly Germans, French, Italians, and Jews. They were soon followed by Russians, Poles, and other Eastern European nations, in addition to Chinese entering from the West. As the Irish before them, many of these migrants lived in overcrowded shanty-type slums, such as "the Ward" which was centred on Bay Street, now the heart of the country's Financial District. </p>
+				<div class="imgRight">
+					<div class="imgInner">
+						<img src="image/6.jpg" width="220" height="174" alt=""/>
+				  	
+					<p class="imgCaption">View of Toronto in 1854. Toronto became a major destination for immigrants to Canada in the second half of the 19th century.</p></div>
+				</div>
+				<p>As new migrants began to prosper, they moved to better housing in other areas, in what is now understood to be succession waves of settlement. Despite its fast-paced growth, by the 1920s, Toronto's population and economic importance in Canada remained second to the much longer established Montreal, Quebec. However, by 1934, the Toronto Stock Exchange had become the largest in the country</p>
+				<p>In 1954, the City of Toronto and 12 surrounding municipalities were federated into a regional government known as Metropolitan Toronto.[68] The postwar boom had resulted in rapid suburban development and it was believed a coordinated land-use strategy and shared services would provide greater efficiency for the region. The metropolitan government began to manage services that crossed municipal boundaries, including highways, police services, water and public transit. </p>
+				<p>In that year, a half-century after the Great Fire of 1904, disaster struck the city again when Hurricane Hazel brought intense winds and flash flooding. In the Toronto area, 81 people were killed, nearly 1,900 families were left homeless, and the hurricane caused more than CA$25 million in damage.[69]</p>
+				<p>In 1967, the seven smallest municipalities of Metropolitan Toronto were merged with larger neighbours, resulting in a six-municipality configuration that included the former city of Toronto and the surrounding municipalities of East York, Etobicoke, North York, Scarborough, and York.[70]</p>
+			  <h2 class="header mt-5 borderBottom">Geography</h2>
+				<p>Toronto covers an area of 630 square kilometres (243 sq mi),[86] with a maximum north–south distance of 21 kilometres (13 mi) and a maximum east–west distance of 43 km (27 mi). It has a 46-kilometre (29 mi) long waterfront shoreline, on the northwestern shore of Lake Ontario. The Toronto Islands and Port Lands extend out into the lake, allowing for a somewhat sheltered Toronto Harbour south of the downtown core.[87] An Outer Harbour was constructed south east of downtown and it's now used for recreation. The city's borders are formed by Lake Ontario to the south, the western boundary of Marie Curtis Park, Etobicoke Creek, Eglinton Avenue and Highway 427 to the west, Steeles Avenue to the north and the Rouge River and Scarborough–Pickering Townline to the east. </p>
+			  <h3 class="subHeader">Topography</h3>
+				<div class="imgRight">
+					<div class="imgInner">
+						<img src="image/7.jpg" width="220" height="243" alt=""/>
+				  	</div>
+					<p class="imgCaption">Satellite image of Toronto and surrounding area. Urban areas of the city are interrupted by the Toronto ravine system.</p>
+				</div>
+				<p>The city is mostly flat or gentle hills and the land gently slopes upward away from the lake. The flat land is interrupted by the Toronto ravine system, which is cut by numerous creeks and rivers of the Toronto waterway system, most notably the Humber River in the west end, the Don River east of downtown (these two rivers flanking and defining the Toronto Harbour), and the Rouge River at the city's eastern limits. Most of the ravines and valley lands in Toronto today are parklands, and recreational trails are laid out along the ravines and valleys. The original town was laid out in a grid plan on the flat plain north of the harbour, and this plan was extended outwards as the city grew. The width and depth of several of the ravines and valleys are such that several grid streets, such as Finch Avenue, Leslie Street, Lawrence Avenue, and St. Clair Avenue, terminate on one side of a ravine or valley and continue on the other side. Toronto has many bridges spanning the ravines. Large bridges such as the Prince Edward Viaduct were built to span wide river valleys. </p>
+				<p>Despite its deep ravines, Toronto is not remarkably hilly, but its elevation does increase steadily away from the lake. Elevation differences range from 76.5 metres (251 ft) above sea level at the Lake Ontario shore to 209 m (686 ft) ASL near the York University grounds in the city's north end at the intersection of Keele Street and Steeles Avenue.[88] There are occasional hilly areas; in particular, midtown Toronto has a number of sharply sloping hills. Lake Ontario remains occasionally visible from the peaks of these ridges as far north as Eglinton Avenue, 7 to 8 kilometres (4.3 to 5.0 mi) inland. </p>
+				<h3 class="subHeader">Climate</h3>
+				<p>The city of Toronto has a hot summer humid continental climate (Köppen: Dfa),[93] however was in the 20th century still on the threshold of a warm summer humid continental climate (Dfb) but still found in the metropolitan region,[94] with warm, humid summers and cold winters. According to the classification applied by Natural Resources Canada, the city of Toronto is in plant hardiness zone 7a, with some suburbs & nearby towns having lower zone ratings.[95][96]</p>
+				<p>The city experiences four distinct seasons, with considerable variance in length.[97] As a result of the rapid passage of weather systems (such as high- and low-pressure systems), the weather is variable from day to day in all seasons.[97] Owing to urbanization and its proximity to water, Toronto has a fairly low diurnal temperature range. The denser urbanscape makes for warmer nights year around; the average nighttime temperature is about 3.0 °C (5.40 °F) warmer in the city than in rural areas in all months.[98] However, it can be noticeably cooler on many spring and early summer afternoons under the influence of a lake breeze since Lake Ontario is cool, relative to the air during these seasons.[98] These lake breezes mostly occur in summer, bringing relief on hot days.[98] Other low-scale maritime effects on the climate include lake-effect snow, fog, and delaying of spring- and fall-like conditions, known as seasonal lag.[98]</p>
+				<h2 class="header mt-5 borderBottom">Cityscape</h2>
+				<div class="landParent">
+					<div class="landScape">
+						<img src="image/8.jpg" width="1095" height="252" alt=""/> 
+						<div class="landscapeTitle">Panorama of the Midtown and Downtown Toronto skyline in 2016</div>
+					</div>
+				</div>
+				<h3 class="subHeader mt-3">Architecture</h3>
+				<div class="imgRight">
+					<div class="imgInner">
+						<img src="image/9.jpg" width="220" height="129" alt=""/>
+				  	</div>
+					<p class="imgCaption">The Royal Ontario Museum was originally designed in a Romanesque Revival style, although other styles were since been added to the building. Architecture in Toronto has been called a "mix of periods and styles".</p>
+				</div>
+				<p>Lawrence Richards, a member of the Faculty of Architecture at the University of Toronto, has said: "Toronto is a new, brash, rag-tag place—a big mix of periods and styles."[108] Toronto's buildings vary in design and age with many structures dating back to the early 19th century, while other prominent buildings were just newly built in the first decade of the 21st century. Bay-and-gable houses, mainly found in Old Toronto, are a distinct architectural feature of the city. Defining the Toronto skyline is the CN Tower, a telecommunications and tourism hub. Completed in 1976 at a height of 553.33 metres (1,815 ft 5 in), it was the world's tallest[109] freestanding structure until 2007 when it was surpassed by Burj Khalifa in Dubai.[110]</p>
+				
+				<p>Through the 1960s and 1970s, significant pieces of Toronto's architectural heritage were demolished to make way for redevelopment or parking. In contrast, since 2000, Toronto has experienced a period of condo construction boom and architectural revival, with several buildings by world-renowned architects having opened. Daniel Libeskind's Royal Ontario Museum addition, Frank Gehry's remake of the Art Gallery of Ontario, and Will Alsop's distinctive Ontario College of Art & Design expansion are among the city's new showpieces.[112] The mid-1800s Distillery District, on the eastern edge of downtown, has been redeveloped into a pedestrian-oriented arts, culture and entertainment neighbourhood.[113]</p>
+				<h3 class="subHeader">Neighbourhoods</h3>
+				<div class="img">
+					<div calss="imgInner">
+						<img src="image/10.png" width="220" height="164" alt=""/>
+					</div>
+					<p class="imgCaption">Map of Toronto with major traffic routes. Also shown are the boundaries of six former municipalities, which form the current City of Toronto</p>
+				</div>
+				<p>Toronto encompasses a geographical area formerly administered by many separate municipalities. These municipalities have each developed a distinct history and identity over the years, and their names remain in common use among Torontonians. Former municipalities include East York, Etobicoke, Forest Hill, Mimico, North York, Parkdale, Scarborough, Swansea, Weston and York. Throughout the city there exist hundreds of small neighbourhoods and some larger neighbourhoods covering a few square kilometres. </p>
+				<p>The many residential communities of Toronto express a character distinct from the skyscrapers in the commercial core. Victorian and Edwardian-era residential buildings can be found in enclaves such as Rosedale, Cabbagetown, The Annex, and Yorkville. The Wychwood Park neighbourhood, historically significant for the architecture of its homes, and for being one of Toronto's earliest planned communities, was designated as an Ontario Heritage Conservation district in 1985.[114] The Casa Loma neighbourhood is named after "Casa Loma", a castle built in 1911 by Sir Henry Pellat, complete with gardens, turrets, stables, an elevator, secret passages, and a bowling alley.[115] Spadina House is a 19th-century manor that is now a museum.[116]</p>
+				<h3 class="subHeader">Old Toronto</h3>
+			  	<div class="imgRight">
+					<div class="imgInner">
+						<img src="image/10.jpg" width="220" height="146" alt=""/>
+				  	</div>
+					<p class="imgCaption">Victorian-era Bay-and-gable houses are a distinct architectural style of residence that is ubiquitous throughout the older neighbourhoods of Toronto.</p>
+				</div>
+				<p>Victorian-era Bay-and-gable houses are a distinct architectural style of residence that 		is ubiquitous throughout the older neighbourhoods of Toronto.
+					The pre-amalgamation City of Toronto covers the downtown core and also older neighbourhoods to the east, west, and north of it. It is the most densely populated part of the city. The Financial District contains the First Canadian Place, Toronto-Dominion Centre, Scotia Plaza, Royal Bank Plaza, Commerce Court and Brookfield Place. This area includes, among others, the neighbourhoods of St. James Town, Garden District, St. Lawrence, Corktown, and Church and Wellesley. From that point, the Toronto skyline extends northward along Yonge Street. </p>
+				<p>Old Toronto is also home to many historically wealthy residential enclaves, such as Yorkville, Rosedale, The Annex, Forest Hill, Lawrence Park, Lytton Park, Deer Park, Moore Park, and Casa Loma, most stretching away from downtown to the north. East and west of downtown, neighbourhoods such as Kensington Market, Chinatown, Leslieville, Cabbagetown and Riverdale are home to bustling commercial and cultural areas as well as communities of artists with studio lofts, with many middle- and upper-class professionals. Other neighbourhoods in the central city retain an ethnic identity, including two smaller Chinatowns, the Greektown area, Little Italy, Portugal Village, and Little India, along with others. </p>
+				<h2 class="header mt-5 borderBottom">Culture</h2>
+				<div class="img">
+					<div class="imgInner">
+						<img src="image/11.jpg" width="220" height="147" alt=""/>
+				  	</div>
+					<p class="imgCaption">Toronto is the world's third largest centre for English-language theatre, home to venues like the Royal Alexandra Theatre, the oldest continuously operating theatre in North America.</p>
+				</div>
+				<p>Toronto theatre and performing arts scene has more than fifty ballet and dance companies, six opera companies, two symphony orchestras and a host of theatres. The city is home to the National Ballet of Canada, the Canadian Opera Company, the Toronto Symphony Orchestra, the Canadian Electronic Ensemble, and the Canadian Stage Company. Notable performance venues include the Four Seasons Centre for the Performing Arts, Roy Thomson Hall, the Princess of Wales Theatre, the Royal Alexandra Theatre, Massey Hall, the Toronto Centre for the Arts, the Elgin and Winter Garden Theatres and the Sony Centre for the Performing Arts (originally the "O'Keefe Centre" and formerly the "Hummingbird Centre"). </p>
+				<p>Ontario Place features the world's first permanent IMAX movie theatre, the Cinesphere,[129] as well as the Budweiser Stage, an open-air venue for music concerts. In spring 2012, Ontario Place closed after a decline in attendance over the years. Although the Molson Amphitheatre and harbour still operate, the park and Cinesphere are no longer in use. There are ongoing plans to revitalise Ontario Place.[130] </p>
+				<p>Each summer, the Canadian Stage Company presents an outdoor Shakespeare production in Toronto's High Park called "Dream in High Park". Canada's Walk of Fame acknowledges the achievements of successful Canadians, with a series of stars on designated blocks of sidewalks along King Street and Simcoe Street. </p>
+				<div class="imgRight">
+					<div class="imgInner">
+						<img src="image/12.jpg" width="220" height="146" alt=""/>
+				  	</div>
+					<p class="imgCaption">Caribana is a festival celebrating Caribbean culture and traditions. Held each summer in the city, it is North America's largest street festival.</p>
+				</div>
+				<p>The production of domestic and foreign film and television is a major local industry. Toronto as of 2011 ranks as the third largest production centre for film and television after Los Angeles and New York City,[131] sharing the nickname "Hollywood North" with Vancouver.[132][133][134] The Toronto International Film Festival is an annual event celebrating the international film industry. Another prestigious film festival is the Toronto Student Film Festival, which screens the works of students ages 12–18 from many different countries across the globe. </p>
+				<p>Toronto's Caribana (formerly known as Scotiabank Caribbean Carnival) takes place from mid-July to early August of every summer.[135] Primarily based on the Trinidad and Tobago Carnival, the first Caribana took place in 1967 when the city's Caribbean community celebrated Canada's Centennial. More than forty years later, it has grown to attract one million people to Toronto's Lake Shore Boulevard annually. Tourism for the festival is in the hundred thousands, and each year, the event generates over $400 million in revenue into Ontario's economy.[136]</p>
+				<h3 class="subHeader">Media</h3>
+				<p>Toronto is Canada's largest media market,[138] and has four conventional dailies, two alt-weeklies, and three free commuter papers in a greater metropolitan area of about 6 million inhabitants. The Toronto Star and the Toronto Sun are the prominent daily city newspapers, while national dailies The Globe and Mail and the National Post are also headquartered in the city. The Toronto Star, The Globe and Mail, and National Post are broadsheet newspapers. StarMetro is distributed as free commuter newspapers. Several magazines and local newspapers cover Toronto, including Now and Toronto Life, while numerous magazines are produced in Toronto, such as Canadian Business, Chatelaine, Flare and Maclean's. Daily Hive, Western Canada's largest online-only publication, opened their Toronto office in 2016.[139] Toronto contains the headquarters of the major English-language Canadian television networks CBC, CTV, Citytv, Global, The Sports Network (TSN) and Sportsnet. Much (formerly MuchMusic), M3 (formerly MuchMore) and MTV Canada are the main music television channels based in the city, though they no longer primarily show music videos as a result of channel drift. </p>
+				<h3 class="subHeader">Tourism</h3>
+				<div class="img">
+					<div class="imgInner">
+						<img src="image/12.jpg" width="220" height="146" alt=""/>
+				  	</div>
+					<p class="imgCaption">The Art Gallery of Ontario is an art museum and the second most visited museum in Toronto.</p>
+				</div>
+				<p>The Royal Ontario Museum is a museum of world culture and natural history. The Toronto Zoo[140][141] is home to over 5,000 animals representing over 460 distinct species. The Art Gallery of Ontario contains a large collection of Canadian, European, African and contemporary artwork, and also plays host to exhibits from museums and galleries all over the world. The Gardiner Museum of ceramic art is the only museum in Canada entirely devoted to ceramics, and the Museum's collection contains more than 2,900 ceramic works from Asia, the Americas, and Europe. The city also hosts the Ontario Science Centre, the Bata Shoe Museum, and Textile Museum of Canada.</p>
+				<p>Other prominent art galleries and museums include the Design Exchange, the Museum of Inuit Art, the TIFF Bell Lightbox, the Museum of Contemporary Art Toronto Canada, the Institute for Contemporary Culture, the Toronto Sculpture Garden, the CBC Museum, the Redpath Sugar Museum, the University of Toronto Art Centre, Hart House, the TD Gallery of Inuit Art and the Aga Khan Museum. The city also runs its own museums, which include the Spadina House. </p>
+				<p>The Don Valley Brick Works is a former industrial site that opened in 1889 and was partly restored as a park and heritage site in 1996, with further restoration and reuse being completed in stages since then. The Canadian National Exhibition ("The Ex") is held annually at Exhibition Place, and it is the oldest annual fair in the world. The Ex has an average attendance of 1.25 million.[142]</p>
+		  </div>	
+		</div>
+	</div>
+</div>
+</body>
+</html>
